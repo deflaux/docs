@@ -4,7 +4,7 @@
 
 {% block footer %}
  <script type="text/javascript">
-    $(document).ready(function() {
+    jQuery($(document).ready(function() {
         alert("setup toggles");
         $(".toggle > *").hide();
         $(".toggle .header").show();
@@ -13,6 +13,6 @@
             $(this).parent().children().not(".header").toggle(400);
             $(this).parent().children(".header").toggleClass("open");
         })
-    });
+    }));
 </script>
 {% endblock %}
