@@ -6,15 +6,27 @@
 Build your own Google Genomics API Client
 ===============================================
 
-The tools for working with the `Google Genomics API <https://cloud.google.com/genomics/>`_
+.. comment: begin: goto-read-the-docs
+
+.. container:: visible-only-on-github
+
+   +-----------------------------------------------------------------------------------+
+   | **The properly rendered version of this document can be found at Read The Docs.** |
+   |                                                                                   |
+   | **If you are reading this on github, you should instead click** `here`__.         |
+   +-----------------------------------------------------------------------------------+
+
+.. _RenderedVersion: http://googlegenomics.readthedocs.org/en/latest/use_cases/build_your_own_api_client/index.html
+
+__ RenderedVersion_
+
+.. comment: end: goto-read-the-docs
+
+The tools for working with the `Google Genomics API`_
 are all open source and available `on GitHub <https://github.com/googlegenomics>`_.
 
 This documentation covers how to get started with the available tools as well
 as how you might build your own code which uses the API.
-
-All improvements to these docs are welcome! You can
-`file an issue <https://github.com/googlegenomics/docs/issues>`_ or
-submit a `pull request <https://github.com/googlegenomics/docs/blob/master/CONTRIBUTING.rst>`_.
 
 .. toctree::
    :maxdepth: 2
@@ -22,6 +34,5 @@ submit a `pull request <https://github.com/googlegenomics/docs/blob/master/CONTR
    ../../constants
    ../../common_api_flows
    ../../auth_requirements
-   ../../api-client-java/index
    ../../api-client-python/index
    ../../api-client-r/index

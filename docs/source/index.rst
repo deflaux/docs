@@ -4,20 +4,32 @@
    contain the root `toctree` directive.
 
 Google Genomics Cookbook
-===========================================
+========================
 
-Here you will find task-oriented documentation.  What do you want to do today?
+Welcome to the Google Genomics Cookbook on Read the Docs. 
+
+  +--------------------------------------------------------------------+
+  | The Google Genomics Cookbook on Read the Docs is not actively      |
+  | maintained. For the most up to date documentation, view the        |
+  | official Google Genomics documentation at                          |
+  | `cloud.google.com/genomics`_. There you will find information such |
+  | as `What is Google Genomics`_, `Google Genomics fundamentals`_,    |
+  | and details of the `Google Genomics API`_.                         |
+  |                                                                    |
+  | Also note that much of the Genomics v1 API surface has been        |
+  | superseded by Variant Transforms and htsget. See the `deprecation  |
+  | notice <https://cloud.google.com/genomics/deprecation>`_ for more  |
+  | information.                                                       |
+  +--------------------------------------------------------------------+
+
+Here on Read the Docs, you will find documentation and tutorials for 
+common tasks including moving, transforming, and analyzing genomic data.
 
 .. toctree::
-  :maxdepth: 1
+   :maxdepth: 2
 
-  use_cases/discover_public_data/index
-  use_cases/load_data/index
-  use_cases/browse_genomic_data/index
-  use_cases/perform_quality_control_checks/index
-  use_cases/annotate_variants/index
-  use_cases/analyze_variants/index
-  use_cases/build_your_own_api_client/index
-  mailinglist
-
-.. include:: includes/footer.rst
+   sections/select_genomic_data
+   sections/process_data
+   sections/access_data
+   sections/analyze_data
+   sections/learn_more

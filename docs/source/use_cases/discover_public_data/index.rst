@@ -1,14 +1,28 @@
-Discover Public Data
+Discover Published Data
 ========================
 
+.. comment: begin: goto-read-the-docs
+
+.. container:: visible-only-on-github
+
+   +-----------------------------------------------------------------------------------+
+   | **The properly rendered version of this document can be found at Read The Docs.** |
+   |                                                                                   |
+   | **If you are reading this on github, you should instead click** `here`__.         |
+   +-----------------------------------------------------------------------------------+
+
+.. _RenderedVersion: http://googlegenomics.readthedocs.org/en/latest/use_cases/discover_public_data/index.html
+
+__ RenderedVersion_
+
+.. comment: end: goto-read-the-docs
+
+
+
 .. toctree::
-   :maxdepth: 2
+  :maxdepth: 2
 
-  google_genomics_public_data
-  mssng_data
-  tute_genomics_public_data
-  pgp_public_data
-..  ../../pgp-data
+  genomic_data_toc
+  annotations_toc
 
-
-
+Please let us know if you have a dataset that you wish to share and have listed here for discovery.

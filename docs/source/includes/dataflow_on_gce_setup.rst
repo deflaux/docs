@@ -1,30 +1,20 @@
-.. container:: toggle
+If you do not have Java on your local machine, the following setup instructions will allow you to *launch* Dataflow jobs using the `Google Cloud Shell`_:
 
-    .. container:: header
+#. If you have not already done so, follow the `Genomics Quickstart`_.
 
-        To kick off the job from Google Compute Engine: **Show/Hide Instructions**
+#. If you have not already done so, follow the `Dataflow Quickstart`_.
 
-    .. container:: content
+#. Use the `Cloud Console`_ to activate the `Google Cloud Shell`_.
 
-    If you do not have Java on your local machine, you can set up Java 7 on a `Google Compute Engine`_ instance.  The following setup instructions will allow you to *launch* Dataflow jobs from a Compute Engine instance:
+#. Run the following commands in the Cloud Shell to install `Java 8`_.
 
-      (0) Google Cloud Dataflow is currently in Alpha.  If you have not already done so, `request to be whitelisted <https://cloud.google.com/dataflow/getting-started>`_ to use Dataflow.
+.. code-block:: shell
 
-      (1) Use the `Google Developers Console`_ to spin up a `Google Compute Engine`_ instance and ssh into it.  If you have not done this before, see the `step-by-step instructions <https://cloud.google.com/compute/docs/quickstart-developer-console>`_.
+  sudo apt-get update
+  sudo apt-get install --assume-yes openjdk-8-jdk maven
+  sudo update-alternatives --config java
+  sudo update-alternatives --config javac
 
-      (2) Run the following commands on the Compute Engine instance to install `Java 7 <http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html>`_ and copy the Jar.
+.. note::
 
-      .. code-block:: shell
-
-        sudo apt-get update
-        sudo apt-get install --assume-yes openjdk-7-jdk maven
-        curl -O -L https://github.com/googlegenomics/dataflow-java/raw/master/google-genomics-dataflow.jar
-        sudo update-alternatives --config java
-
-      (3) Run the following command from your local machine to copy the ``client_secrets.json`` to the Compute Engine instance.  If you do not already have this file, see the `sign up instructions <https://cloud.google.com/genomics/install-genomics-tools#authenticate>`_ to obtain it.
-
-      .. code-block:: shell
-
-        gcloud compute copy-files ~/googlegenomics/dataflow-java/client_secrets.json INSTANCE-NAME:~/
-
-    *Tip:* Add option ``--noLaunchBrowser`` your dataflow command lines so that the authorization flow prints a URL to be copied instead of launching a web browser.
+  Depending on the pipeline, Cloud Shell may not not have sufficient memory to run the pipeline locally (e.g., without the ``--runner`` command line flag).  If you get error ``java.lang.OutOfMemoryError: Java heap space``, follow the instructions to run the pipeline using Compute Engine Dataflow workers instead of locally (e.g. use ``--runner=DataflowPipelineRunner``).

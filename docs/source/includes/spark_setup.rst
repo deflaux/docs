@@ -1,59 +1,48 @@
+* Deploy your Spark cluster using `Google Cloud Dataproc`_.  This can be done using the `Cloud Platform Console <https://console.cloud.google.com/project/_/dataproc/clustersAdd>`__ or the following ``gcloud`` command:
+
+  .. code-block:: shell
+
+    gcloud beta dataproc clusters create example-cluster --scopes cloud-platform
+
+* ssh to the master.
+
+  .. code-block:: shell
+
+    gcloud compute ssh example-cluster-m
+
+* Compile and build the pipeline jar.  You can `build locally <https://github.com/googlegenomics/spark-examples>`_ or build on the Spark master Google Compute Engine virtual machine.
+
 .. container:: toggle
 
-    .. container:: header
+  .. container:: header
 
-        Deploy and configure the cluster: **Show/Hide Instructions**
+    To compile and build on Compute Engine: **Show/Hide Instructions**
 
-    .. container:: content
+  .. container:: content
 
-      (1) Use `bdutil <https://cloud.google.com/hadoop/bdutil>`_ to deploy the cluster.  If you have not already done so, `install and configure <https://cloud.google.com/hadoop/>`_ bdutil.  **See issue** `#61 <https://github.com/googlegenomics/spark-examples/issues/61>`_ **for one additional temporary instruction when using bdutil.**
+    (1) Install `sbt <http://www.scala-sbt.org/release/tutorial/Installing-sbt-on-Linux.html>`_.
 
-    .. code-block:: shell
+      .. code-block:: shell
 
-      ./bdutil -e extensions/spark/spark_env.sh deploy
+        echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
+        sudo apt-get install apt-transport-https
+        sudo apt-get update
+        sudo apt-get install sbt
 
-    .. container:: content
+    (2) Clone the github repository.
 
-      (2) Copy your ``client_secrets.json`` to the master.  If you do not already have this file, see the `sign up instructions <https://cloud.google.com/genomics/install-genomics-tools#authenticate>`_ to obtain it.
+      .. code-block:: shell
 
-    .. code-block:: shell
+        sudo apt-get install git
+        git clone https://github.com/googlegenomics/spark-examples.git
 
-      gcloud compute copy-files client_secrets.json hadoop-m:~/
+    (3) Compile the Jar.
 
-    .. container:: content
+      .. code-block:: shell
 
-      (3) ssh to the master.
+        cd spark-examples
+        sbt assembly
+        cp target/scala-2.*/googlegenomics-spark-examples-assembly-*.jar ~/
+        cd ~/
 
-    .. code-block:: shell
-
-      gcloud compute ssh hadoop-m
-
-    .. container:: content
-
-      (4) Install `sbt <http://www.scala-sbt.org/release/tutorial/Installing-sbt-on-Linux.html>`_.
-
-    .. code-block:: shell
-
-      echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-      sudo apt-get update
-      sudo apt-get install sbt
-
-    .. container:: content
-
-      (5) Clone the github repository.
-
-    .. code-block:: shell
-
-      sudo apt-get install git
-      git clone https://github.com/googlegenomics/spark-examples.git
-
-    .. container:: content
-
-      (6) Compile the Jar.
-
-    .. code-block:: shell
-
-      cd spark-examples
-      sbt assembly
-      cp target/scala-2.10/googlegenomics-spark-examples-assembly-*.jar ~/
-      cd ~/

@@ -1,27 +1,78 @@
 Personal Genome Project Data
 ============================
 
-.. toctree::
-   :maxdepth: 3
+.. comment: begin: goto-read-the-docs
 
-.. contents::
+.. container:: visible-only-on-github
 
-.. include:: ../../pgp-data.rst
+   +-----------------------------------------------------------------------------------+
+   | **The properly rendered version of this document can be found at Read The Docs.** |
+   |                                                                                   |
+   | **If you are reading this on github, you should instead click** `here`__.         |
+   +-----------------------------------------------------------------------------------+
 
-Google Genomics PGP Dataset
----------------------------
+.. _RenderedVersion: http://googlegenomics.readthedocs.org/en/latest/use_cases/discover_public_data/pgp_public_data.html
 
-Google Genomics variant set id for dataset ``pgp_20150205``: `9170389916365079788 <https://developers.google.com/apis-explorer/#p/genomics/v1beta2/genomics.datasets.get?datasetId=9170389916365079788>`_
+__ RenderedVersion_
 
-This variant set contains the Complete Genomics datasets from:
+.. comment: end: goto-read-the-docs
 
-* `gs://pgp-harvard-data-public/**/masterVar*bz2 <https://console.developers.google.com/storage/pgp-harvard-data-public>`_
-* a few additional PGP Complete Genomics genomes
-* and one variants-only PGP genome
+This dataset comprises roughly 180 Complete Genomics genomes.  See the `Personal Genome Project`_ and the publication for full details:
 
-BigQuery PGP Tables
--------------------
+|  `A public resource facilitating clinical use of genomes <http://www.ncbi.nlm.nih.gov/pubmed/22797899>`_
+|  Ball MP1, Thakuria JV, Zaranek AW, Clegg T, Rosenbaum AM, Wu X, Angrist M, Bhak J, Bobe J, Callow MJ, Cano C, Chou MF, Chung WK, Douglas SM, Estep PW, Gore A, Hulick P, Labarga A, Lee JH, Lunshof JE, Kim BC, Kim JI, Li Z, Murray MF, Nilsen GB, Peters BA, Raman AM, Rienhoff HY, Robasky K, Wheeler MT, Vandewege W, Vorhaus DB, Yang JL, Yang L, Aach J, Ashley EA, Drmanac R, Kim SJ, Li JB, Peshkin L, Seidman CE, Seo JS, Zhang K, Rehm HL, Church GM.
+|  Published: July 24, 2012
+|  DOI: 10.1073/pnas.1201904109
+|
 
-Variant set ``pgp_20150205`` was exported to BigQuery table `google.com:biggene:pgp_20150205.variants <https://bigquery.cloud.google.com/table/google.com:biggene:pgp_20150205.variants>`_
+Google Cloud Platform data locations
+------------------------------------
 
+* Google Cloud Storage folder `gs://pgp-harvard-data-public <https://console.cloud.google.com/storage/pgp-harvard-data-public>`_
+* Google Genomics Dataset ID `9170389916365079788 <https://developers.google.com/apis-explorer/#p/genomics/v1/genomics.datasets.get?datasetId=9170389916365079788>`_
+* Google BigQuery Dataset IDs
+   * `google.com:biggene:pgp_20150205.genome_calls <https://bigquery.cloud.google.com/table/google.com:biggene:pgp_20150205.genome_calls>`_
+
+Provenance
+----------
+
+Google Genomics variant set for dataset ``pgp_20150205``: `9170389916365079788 <https://developers.google.com/apis-explorer/#p/genomics/v1/genomics.datasets.get?datasetId=9170389916365079788>`_ contains:
+
+* the Complete Genomics datasets from `gs://pgp-harvard-data-public/**/masterVar*bz2 <https://console.cloud.google.com/storage/pgp-harvard-data-public>`_
+
+Appendix
+--------
+
+Google is hosting a copy of the `PGP`_ Harvard data in Google Cloud Storage.
+All of the data is in this bucket: ``gs://pgp-harvard-data-public``
+
+If you wish to browse the data you will need to
+`install gsutil <https://cloud.google.com/storage/docs/gsutil_install>`_.
+
+Once installed, you can run the ``ls`` command on the pgp bucket::
+
+  $ gsutil ls gs://pgp-harvard-data-public
+  gs://pgp-harvard-data-public/cgi_disk_20130601_00C68/
+  gs://pgp-harvard-data-public/hu011C57/
+  gs://pgp-harvard-data-public/hu016B28/
+  ....lots more....
+
+The sub folders are `PGP`_ IDs, so if we ``ls`` a specific one::
+
+  $ gsutil ls gs://pgp-harvard-data-public/hu011C57/
+  gs://pgp-harvard-data-public/hu011C57/GS000018120-DID/
+
+And then keep diving down through the structure, you can end up here::
+
+  $ gsutil ls gs://pgp-harvard-data-public/hu011C57/GS000018120-DID/GS000015172-ASM/GS01669-DNA_B05/ASM/
+  gs://pgp-harvard-data-public/hu011C57/GS000018120-DID/GS000015172-ASM/GS01669-DNA_B05/ASM/dbSNPAnnotated-GS000015172-ASM.tsv.bz2
+  gs://pgp-harvard-data-public/hu011C57/GS000018120-DID/GS000015172-ASM/GS01669-DNA_B05/ASM/gene-GS000015172-ASM.tsv.bz2
+  ... and more ...
+
+
+Your genome data is located at:
+gs://pgp-harvard-data-public/{YOUR_PGP_ID}
+
+If you do not see the data you are looking for, you should contact
+`PGP`_ directly through `your web profile <https://my.pgp-hms.org/message/new>`_.
 
